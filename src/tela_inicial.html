@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bibliotaku</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/jquery.js"></script>
 </head>
 <body>
 
@@ -23,22 +24,48 @@
         </div>
 
         <div class="cabecalho_navegacao">
-            <p>Menu</p>
+            
+            <nav>
+                <ul>
+
+                    <!-- Casa branca pra referenciar na barra horizontal -->
+                    <li class="book"><a href="tela_inicial.html"><img src="assets/whitehouse.png"></a></li>
+
+                    <!-- Abrindo categorias de anime (apenas estilização) -->
+                    <li class="categorias" onmouseover="showCategorias()" onmouseout="hideCategorias()">
+                        Categorias <img src="assets/seta.png"/>
+                        <ul class="show-content" id="categoriasShow">
+                            <li><a href="#">Ação</a></li>
+                            <li><a href="#">Shoujo</a></li>
+                            <li><a href="#">Romance</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
 
     </header>
 
 <!--
-
-    <div id="menu">
-        <p>Menu</p>
-    </div>
-
-    
     <div id="rodape">
         <span>Todos os direitos reservados aos desenvolvedores Emylly Guimarães e Felipe Marzani</span>
     </div>
--->    
+-->
+
+<!-- Definindo funções do jQuery para o funcionando da aplicação -->
+<script>
+    $(document).ready(function() {
+      $(".categorias").hover(
+        function() {
+          $("#categoriasShow").show();
+        },
+        function() {
+          $("#categoriasShow").hide();
+        }
+      );
+    });
+</script>
 
 </body>
 </html>
