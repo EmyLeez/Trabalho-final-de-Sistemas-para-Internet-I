@@ -10,9 +10,7 @@
 <body>
 
     <!-- O Header conterá o cabeçalho do projeto -->
-
     <header>
-
         <!-- Definindo a parte de cima do cabeçalho -->
         <div class="cabecalho_pix">
             <img src="assets/cabecalho.png"/>
@@ -21,51 +19,101 @@
         <!-- Definindo a parte do meio do cabeçalho -->
         <div class="cabecalho_meio">
             <img src="assets/logo.png"/>
+            <div class="texto_no_meio">
+                <h1>Bem vindo a nossa loja!</h1>
+            </div>
+            <img src="assets/naruto.png" id="naruto"/>
         </div>
 
         <div class="cabecalho_navegacao">
-            
             <nav>
                 <ul>
 
                     <!-- Casa branca pra referenciar na barra horizontal -->
                     <li class="book"><a href="tela_inicial.html"><img src="assets/whitehouse.png"></a></li>
 
+                    <!-- Abrindo categorias de Página Inicial -->
+                    <li class="inicial">
+                        Página Inicial
+                    </li>
+
+                    <!-- Define as funções para movimentação de mouse em cima da aba de categorias -->
+                    <script>
+                        $(document).ready(function() {
+                          $(".categorias").hover(
+                            function() {
+                              $("#categoriasShow").show();
+                            },
+                            function() {
+                              $("#categoriasShow").hide();
+                            }
+                          );
+                        });
+                    </script>
+
                     <!-- Abrindo categorias de anime (apenas estilização) -->
-                    <li class="categorias" onmouseover="showCategorias()" onmouseout="hideCategorias()">
-                        Categorias <img src="assets/seta.png"/>
+                    <li class="categorias">
+                        Mangás <img src="assets/seta.png"/>
                         <ul class="show-content" id="categoriasShow">
                             <li><a href="#">Ação</a></li>
                             <li><a href="#">Shoujo</a></li>
                             <li><a href="#">Romance</a></li>
                         </ul>
                     </li>
+
+                    <!-- Define as funções para movimentação de mouse em cima da aba de categorias -->
+                    <script>
+                        $(document).ready(function() {
+                          $(".categorias").hover(
+                            function() {
+                              $("#categoriasShow").show();
+                            },
+                            function() {
+                              $("#categoriasShow").hide();
+                            }
+                          );
+                        });
+                    </script>
+
+                    <!-- Abrindo categoria de Livros -->
+                    <li class="livros">
+                        Livros <img src="assets/seta.png"/>
+                        <ul class="show-content" id="livrosShow">
+                            <li><a href="#">Ação</a></li>
+                            <li><a href="#">Terror</a></li>
+                            <li><a href="#">Romance</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Define as funções para movimentação de mouse em cima da aba de livros -->
+                    <script>
+                        $(document).ready(function() {
+                          $(".livros").hover(
+                            function() {
+                              $("#livrosShow").show();
+                            },
+                            function() {
+                              $("#livrosShow").hide();
+                            }
+                          );
+                        });
+                    </script>
+
+                    <li class="inicial">
+                        Fale Conosco
+                    </li>
                 </ul>
             </nav>
-
         </div>
-
     </header>
 
-<!--
-    <div id="rodape">
+   
+    
+
+    <!-- Definindo o rodapé da página -->
+    <div class="rodape">
         <span>Todos os direitos reservados aos desenvolvedores Emylly Guimarães e Felipe Marzani</span>
     </div>
--->
-
-<!-- Definindo funções do jQuery para o funcionando da aplicação -->
-<script>
-    $(document).ready(function() {
-      $(".categorias").hover(
-        function() {
-          $("#categoriasShow").show();
-        },
-        function() {
-          $("#categoriasShow").hide();
-        }
-      );
-    });
-</script>
 
 </body>
 </html>
