@@ -1,38 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 
-.conteudo{
+header {
+    color: #fff;
+    height: 200px;
     position: relative;
 }
 
-
-#image { 
-    position: fixed;
+.cabecalho_pix {
     width: 100%;
-    height: 8%;
-    left: 0px;
-    top: 0px;
-    right: 0px;
+    height: 40px;
 }
 
-.logo {
-    position: relative;
+.cabecalho_pix img {
+    width: 100%;
+    height: 40px;
 }
 
-#bibliotaku {
-    width: 50%;
+.cabecalho_meio {
+    width: 100%;
+    height: 100px;
 }
 
-#menu {
-    position:fixed;
-    background: black;
+.cabecalho_meio img {
+    width: 30%;
+    height: 100px;
+}
+
+.cabecalho_navegacao {
+    background-color: black;
     color: aliceblue; 
     width: 100%;
-    left:0px; 
+    padding-left: 10px;
 }
 
-#rodape {
-    width: 600px;
-    padding: 10px 2%;
-    background-color: #888888;
-    color: white;
-    text-align: center;
-}
+
+
