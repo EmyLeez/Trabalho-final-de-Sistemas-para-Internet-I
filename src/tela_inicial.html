@@ -150,7 +150,7 @@
         <!-- Terceiro Produto -->
         <div class="produto">
             <img src="assets/lendarios_livro1.jpg">
-            <h2>Livro Lendarios</h2>
+            <h2>Livro Lendarios Vol 1</h2>
             <p>Valor: R$ 50,90</p>
             <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
             <div class="opcoes-pagamento">
@@ -168,7 +168,7 @@
         <!-- Quarto Produto -->
         <div class="produto">
             <img src="assets/eleanor_livro1.jpg">
-            <h2>Livro Eleanor</h2>
+            <h2>Livro Eleanor Vol 1</h2>
             <p>Valor: R$ 50,90</p>
             <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
             <div class="opcoes-pagamento">
@@ -183,6 +183,36 @@
             </div>
         </div>
 
+        <!-- Quinto Produto -->
+        <div class="produto">
+            <img src="assets/manga_psycho1.jpg">
+            <h2>Mangá Psycho Pass</h2>
+            <p>Valor: R$ 30,90</p>
+            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label>
+                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $(".botao-compra").click(function() {
+                    $(this).siblings(".opcoes-pagamento").toggle();
+                });
+
+                $(".botao-confirmar").click(function() {
+                    $(this).closest(".opcoes-pagamento").hide();
+                    // Lógica para efetuar a compra, enviar dados ao servidor, etc.
+                });
+            });            
+        </script>
     </div>
 
     

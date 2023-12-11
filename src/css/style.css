@@ -153,3 +153,11 @@ a {
     display: flex;
     justify-content: space-between;
 }
+
+.opcoes-pagamento {
+    display: none;
+}
+
+.opcoes-pagamento.visivel {
+    display: block;
+}
