@@ -47,7 +47,7 @@ header {
     background-color: black;
     color: aliceblue; 
     width: 100%;
-    height: 20px;
+    height: 30px;
 }
 
 nav {
@@ -67,7 +67,7 @@ li {
 }
   
 .book img {
-    width: 20px; /* Ajuste o tamanho conforme necessário */
+    width: 30px; /* Ajuste o tamanho conforme necessário */
     height: auto;
     margin-right: 10px;
     margin-left: 10px;
@@ -109,13 +109,11 @@ a {
     position: relative;
 }
 
-.categorias {
-    left: 10px;
-}
-
 .categorias, .livros, .inicial {
     margin-right: 15px;
     margin-left: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .livros img {
@@ -131,4 +129,27 @@ a {
     text-align: center;
     position: fixed;
     bottom: 0;
+}
+
+.produto img {
+    max-width: 100px;
+}
+
+.produto {
+    text-align: center;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.produto h2, .produto p, .produto button {
+    margin: 10px 0;
+}
+
+.produto-container {
+    display: flex;
+    justify-content: space-between;
 }

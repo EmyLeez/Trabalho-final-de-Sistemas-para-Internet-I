@@ -107,9 +107,85 @@
         </div>
     </header>
 
-   
-    
+   <!-- Definindo a parte central do projeto. -->
 
+    <div class="produto-container">
+
+        <!-- Primeiro Produto -->
+        <div class="produto">
+            <img src="assets/manga_naruto1.jpg">
+            <h2>Mangá do Naruto Vol 1</h2>
+            <p>Valor: R$ 36,90</p>
+            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label>
+                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
+            </div>
+        </div>
+
+        <!-- Segundo Produto -->
+        <div class="produto">
+            <img src="assets/manga_kimi1.jpg">
+            <h2>Kimi ni Todoke Vol 1</h2>
+            <p>Valor: R$ 36,90</p>
+            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label>
+                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
+            </div>
+        </div>
+
+        <!-- Terceiro Produto -->
+        <div class="produto">
+            <img src="assets/lendarios_livro1.jpg">
+            <h2>Livro Lendarios</h2>
+            <p>Valor: R$ 50,90</p>
+            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label>
+                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
+            </div>
+        </div>
+
+        <!-- Quarto Produto -->
+        <div class="produto">
+            <img src="assets/eleanor_livro1.jpg">
+            <h2>Livro Eleanor</h2>
+            <p>Valor: R$ 50,90</p>
+            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label>
+                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
+            </div>
+        </div>
+
+    </div>
+
+    
     <!-- Definindo o rodapé da página -->
     <div class="rodape">
         <span>Todos os direitos reservados aos desenvolvedores Emylly Guimarães e Felipe Marzani</span>
