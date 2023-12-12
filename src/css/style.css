@@ -229,3 +229,13 @@ button:hover {
 .erro-input {
     background-color: red;
 }
+
+.mensagem {
+    display: none;
+    color: green;
+    font-weight: bold;
+}
+
+#confirmaPagamento{
+    display: none;
+}

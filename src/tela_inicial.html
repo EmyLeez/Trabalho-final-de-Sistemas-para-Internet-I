@@ -167,7 +167,6 @@
                 <label>
                     <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
                 </label><br>
-                <!-- <button onclick="efetuarCompra(this)">Confirmar Compra</button> -->
             </div>
             
             <div class="secao-pix">
@@ -176,8 +175,8 @@
                 <input type="text" id="nomePix" required><br><br>
                 <label for="cpfPix">CPF: </label>
                 <input type="text" id="cpfPix" title="Formato esperado: 000.000.000-00" required><br><br>
-                <button type="submit">Enviar</button>
             </div>
+
 
             <!-- Seção para informações do Cartão -->
             <div class="secao-cartao">
@@ -201,10 +200,10 @@
                     <option value="4">4x de R$ XX (Com juros)</option>
                     <option value="5">5x de R$ XX (Com juros)</option>
                 </select>
-        
-                <button type="submit">Confirmar Pagamento</button>
             </div>
 
+            <div class="mensagem" id="mensagemPagamento"><b>Pagamento Confirmado com Sucesso</b></div>
+            <button type="submit" id="confirmaPagamento">Confirmar Pagamento</button>
 
         </form>
 
@@ -235,6 +234,14 @@
                         var option = $("<option>", { value: i, text: optionText });
                         $("#parcelamento").append(option);
                     }
+
+                    $("#confirmaPagamento").show();
+
+                    $("#confirmaPagamento").off("click");
+
+                    $("#confirmaPagamento").on("click", function (e) {
+                        e.preventDefault();
+                    });                    
                 });
 
                 $("#cartaoNumero").on("input", function () {
@@ -316,10 +323,6 @@
                         $(".secao-cartao").show();
                     }
                 });                
-        
-                $(".botao-confirmar").click(function () {
-                    $(".opcoes-pagamento").hide();
-                });
             });
 
             $(document).ready(function () {
@@ -345,6 +348,9 @@
                         // O CPF não está no formato correto, impede o envio do formulário
                         alert("CPF inválido! Verifique o formato.");
                         event.preventDefault(); // Impede o envio do formulário
+                    } else {
+                        $("#mensagemPagamento").show();
+                        return true;
                     }
                 });
             });            
