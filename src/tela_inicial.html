@@ -116,7 +116,7 @@
             <img src="assets/manga_naruto1.jpg">
             <h2>Mangá do Naruto Vol 1</h2>
             <p>Valor: R$ 36,90</p>
-            <button class="botao-compra" nome_produto="Mangá do Naruto Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <button class="botao-compra" preco="36.90" nome_produto="Mangá do Naruto Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Segundo Produto -->
@@ -124,7 +124,7 @@
             <img src="assets/manga_kimi1.jpg">
             <h2>Kimi ni Todoke Vol 1</h2>
             <p>Valor: R$ 36,90</p>
-            <button class="botao-compra" nome_produto="Kimi ni Todoke Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <button class="botao-compra" preco="36.90" nome_produto="Kimi ni Todoke Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Terceiro Produto -->
@@ -132,7 +132,7 @@
             <img src="assets/lendarios_livro1.jpg">
             <h2>Livro Lendarios Vol 1</h2>
             <p>Valor: R$ 50,90</p>
-            <button class="botao-compra" nome_produto="Livro Lendários Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <button class="botao-compra" preco="50.90" nome_produto="Livro Lendários Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Quarto Produto -->
@@ -140,15 +140,15 @@
             <img src="assets/eleanor_livro1.jpg">
             <h2>Livro Eleanor Vol 1</h2>
             <p>Valor: R$ 50,90</p>
-            <button class="botao-compra" nome_produto="Livro Eleanor Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <button class="botao-compra" preco="50.90" nome_produto="Livro Eleanor Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Quinto Produto -->
         <div class="produto">
             <img src="assets/manga_psycho1.jpg">
             <h2>Mangá Psycho Pass</h2>
-            <p>Valor: R$ 30,90</p>
-            <button class="botao-compra" nome_produto="Mangá Psycho Pass" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+            <p>Valor: R$ 36,90</p>
+            <button class="botao-compra" preco="36.90" nome_produto="Mangá Psycho Pass" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
     </div>
 
@@ -171,43 +171,79 @@
         <!-- Seção para informações do PIX -->
 
         <form id="formu-pagamento">
+
             <div class="secao-pix">
                 <br>
                 <label for="nomePix">Nome Completo: </label>
-                <input type="text" id="nomePix"><br><br>
+                <input type="text" id="nomePix" required><br><br>
                 <label for="cpfPix">CPF: </label>
-                <input type="text" id="cpfPix"><br><br>
+                <input type="text" id="cpfPix" title="Formato esperado: 000.000.000-00" required><br><br>
+                <button type="submit">Enviar</button>
             </div>
-        </form>
 
-        <!-- Seção para informações do Cartão -->
-        <div class="secao-cartao">
-            <br>
-            <label for="nomeCartao">Nome do Titular: </label>
-            <input type="text" id="nomeCartao"><br><br>
-            <label for="numeroCartao">Número do Cartão: </label>
-            <input type="text" id="numeroCartao"><br><br>
-            <label for="validadeCartao">Validade do Cartão (mm/aa): </label>
-            <input type="text" id="validadeCartao"><br><br>
-            <label for="parcelamentoCartao">Opções de Parcelamento: </label>
-            <!-- Outros campos do cartão... -->
-        </div>
+            <!-- Seção para informações do Cartão -->
+            <div class="secao-cartao">
+                <br>
+
+                <label for="nomeTitular">Nome do Titular:</label>
+                <input type="text" id="nomeTitular" required>
+        
+                <label for="cartaoNumero">Número do Cartão:</label>
+                <input type="text" id="cartaoNumero" pattern="\d{4} \d{4} \d{4} \d{4}" title="Formato esperado: 1234 5678 9123 0000" required>
+        
+                <label for="validadeCartao">Validade do Cartão (mm/aa):</label>
+                <input type="text" id="validadeCartao" pattern="\d{2}/\d{2}" title="Formato esperado: mm/aa" required>
+        
+                <label for="segurancaCodigo">Código de Segurança:</label>
+                <input type="text" id="segurancaCodigo" pattern="\d{3}" title="Formato esperado: 123" required>
+        
+                <label for="parcelamento">Opção de Parcelamento:</label>
+                <select id="parcelamento" required>
+                    <option value="1">1x de R$ XX</option>
+                    <option value="2">2x de R$ XX</option>
+                    <option value="3">3x de R$ XX (Sem juros)</option>
+                    <option value="4">4x de R$ XX (Com juros)</option>
+                    <option value="5">5x de R$ XX (Com juros)</option>
+                </select>
+        
+                <div class="card-icons">
+                    <div class="card-icon" id="visa-icon" style="background-image: url('https://cdn1.iconfinder.com/data/icons/cash-card-add-on/48/v-18-512.png');"></div>
+                    <div class="card-icon" id="mastercard-icon" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTulCCCs4aQfCdcekFralabUh6zmkngCirWjiNP-zMpPQ&s');"></div>
+                </div>
+        
+                <button type="submit">Confirmar Pagamento</button>
+            </div>
+
+
+        </form>
 
         <script>
             $(document).ready(function () {
                 $(".botao-compra").click(function () {
-
                     $(".secao-pix, .secao-cartao").hide();
                     $("#nomePix, #cpfPix, #nomeCartao, #numeroCartao, #validadeCartao, #parcelamentoCartao").val("");
 
                     // Pegando dados do produto selecionado a partir do clique no botão do usuário. A finalidade é mostrar para o usuário qual o produto que ele selecionou.
                     var nomeDoProduto = $(this).attr("nome_produto");
 
+                    // Pegando preço do produto
+                    var precoDoProduto = parseFloat($(this).attr("preco"));
+
                     // Permite a visualização do nome do produto.
                     $(".nome-produto").text(nomeDoProduto);
 
                     // Permite a visualização dos métodos de pagamento.
                     $(".opcoes-pagamento").toggle();
+
+                    $("#parcelamento").empty();
+
+                    for (var i = 1; i <= 5; i++) {
+                        var valorParcela = precoDoProduto / i;
+                        var mensagem = i <= 3 ? `(Sem juros)` : `(Com juros de 3% ao mês)`;
+                        var optionText = `${i}x de R$ ${valorParcela.toFixed(2)} ${mensagem}`;
+                        var option = $("<option>", { value: i, text: optionText });
+                        $("#parcelamento").append(option);
+                    }
                 });
 
                 $('input[name="metodoPagamento"]').change(function () {
@@ -227,6 +263,34 @@
                     // Lógica para efetuar a compra, enviar dados ao servidor, etc.
                 });
             });
+
+        $(document).ready(function () {
+            $("#cpfPix").on("input", function () {
+                var currentValue = $(this).val();
+
+                var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+                if (!cpfRegex.test(currentValue)) {
+                    $(this).addClass("erro-cpf");
+                } else {
+                    $(this).removeClass("erro-cpf");
+                    $(this).addClass("ok-cpf");
+                }
+            });
+
+            // Verifica diretamente na tentativa de envio de formulário para saber se o CPF está no formato correto
+            $("#formu-pagamento").submit(function (event) {
+                var currentValue = $("#cpfPix").val();
+
+                // Verifica se o CPF está no formato correto usando uma expressão regular
+                var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+                if (!cpfRegex.test(currentValue)) {
+                    // O CPF não está no formato correto, impede o envio do formulário
+                    alert("CPF inválido! Verifique o formato.");
+                    event.preventDefault(); // Impede o envio do formulário
+                }
+            });
+        });
+
         </script>
     </div>
     

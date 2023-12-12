@@ -174,3 +174,11 @@ a {
 .secao-pix, .secao-cartao {
     display: none;
 }
+
+.erro-cpf {
+    border: 2px solid red;
+}
+
+.ok-cpf {
+    border: 2px solid green;
+}
