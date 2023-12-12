@@ -161,3 +161,10 @@ a {
 .opcoes-pagamento.visivel {
     display: block;
 }
+
+.produto-pagamento {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}

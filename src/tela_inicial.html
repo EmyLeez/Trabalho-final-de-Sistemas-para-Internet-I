@@ -20,7 +20,7 @@
         <div class="cabecalho_meio">
             <img src="assets/logo.png"/>
             <div class="texto_no_meio">
-                <h1>Bem vindo a nossa loja!</h1>
+                <h1>Bem-vindo a nossa loja!</h1>
             </div>
             <img src="assets/naruto.png" id="naruto"/>
         </div>
@@ -116,17 +116,7 @@
             <img src="assets/manga_naruto1.jpg">
             <h2>Mangá do Naruto Vol 1</h2>
             <p>Valor: R$ 36,90</p>
-            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
-            <div class="opcoes-pagamento">
-                <!-- Conteúdo das opções de pagamento -->
-                <label>
-                    <input type="radio" name="metodoPagamento" value="pix"> PIX
-                </label>
-                <label>
-                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-                </label>
-                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
-            </div>
+            <button class="botao-compra" nome_produto="Mangá do Naruto Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Segundo Produto -->
@@ -134,17 +124,7 @@
             <img src="assets/manga_kimi1.jpg">
             <h2>Kimi ni Todoke Vol 1</h2>
             <p>Valor: R$ 36,90</p>
-            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
-            <div class="opcoes-pagamento">
-                <!-- Conteúdo das opções de pagamento -->
-                <label>
-                    <input type="radio" name="metodoPagamento" value="pix"> PIX
-                </label>
-                <label>
-                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-                </label>
-                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
-            </div>
+            <button class="botao-compra" nome_produto="Kimi ni Todoke Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Terceiro Produto -->
@@ -152,17 +132,7 @@
             <img src="assets/lendarios_livro1.jpg">
             <h2>Livro Lendarios Vol 1</h2>
             <p>Valor: R$ 50,90</p>
-            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
-            <div class="opcoes-pagamento">
-                <!-- Conteúdo das opções de pagamento -->
-                <label>
-                    <input type="radio" name="metodoPagamento" value="pix"> PIX
-                </label>
-                <label>
-                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-                </label>
-                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
-            </div>
+            <button class="botao-compra" nome_produto="Livro Lendários Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Quarto Produto -->
@@ -170,17 +140,7 @@
             <img src="assets/eleanor_livro1.jpg">
             <h2>Livro Eleanor Vol 1</h2>
             <p>Valor: R$ 50,90</p>
-            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
-            <div class="opcoes-pagamento">
-                <!-- Conteúdo das opções de pagamento -->
-                <label>
-                    <input type="radio" name="metodoPagamento" value="pix"> PIX
-                </label>
-                <label>
-                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-                </label>
-                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
-            </div>
+            <button class="botao-compra" nome_produto="Livro Eleanor Vol 1" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
         </div>
 
         <!-- Quinto Produto -->
@@ -188,33 +148,46 @@
             <img src="assets/manga_psycho1.jpg">
             <h2>Mangá Psycho Pass</h2>
             <p>Valor: R$ 30,90</p>
-            <button class="botao-compra" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
-            <div class="opcoes-pagamento">
-                <!-- Conteúdo das opções de pagamento -->
-                <label>
-                    <input type="radio" name="metodoPagamento" value="pix"> PIX
-                </label>
-                <label>
-                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-                </label>
-                <button onclick="efetuarCompra(this)">Confirmar Compra</button>
-            </div>
+            <button class="botao-compra" nome_produto="Mangá Psycho Pass" onclick="mostrarOpcoesPagamento(this)">Comprar</button>
+        </div>
+    </div>
+
+    <div class="produto-pagamento">
+
+        <div class="opcoes-pagamento">
+            <!-- Conteúdo das opções de pagamento -->
+            <p>Produto Selecionado: <b><span class="nome-produto"></span></b></p>
+            <p><b>Selecione a forma de pagamento:</b></p>
+            <label>
+                <input type="radio" name="metodoPagamento" value="pix"> PIX
+            </label>
+            <label>
+                <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+            </label><br>
+            <!-- <button onclick="efetuarCompra(this)">Confirmar Compra</button> -->
         </div>
 
         <script>
-            $(document).ready(function() {
-                $(".botao-compra").click(function() {
-                    $(this).siblings(".opcoes-pagamento").toggle();
-                });
+            $(document).ready(function () {
+                $(".botao-compra").click(function () {
 
-                $(".botao-confirmar").click(function() {
-                    $(this).closest(".opcoes-pagamento").hide();
+                    // Pegando dados do produto selecionado a partir do clique no botão do usuário. A finalidade é mostrar para o usuário qual o produto que ele selecionou.
+                    var nomeDoProduto = $(this).attr("nome_produto");
+
+                    // Permite a visualização do nome do produto.
+                    $(".nome-produto").text(nomeDoProduto);
+
+                    // Permite a visualização dos métodos de pagamento.
+                    $(".opcoes-pagamento").toggle();
+                });
+        
+                $(".botao-confirmar").click(function () {
+                    $(".opcoes-pagamento").hide();
                     // Lógica para efetuar a compra, enviar dados ao servidor, etc.
                 });
-            });            
+            });
         </script>
     </div>
-
     
     <!-- Definindo o rodapé da página -->
     <div class="rodape">
