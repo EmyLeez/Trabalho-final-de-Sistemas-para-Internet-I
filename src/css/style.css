@@ -164,7 +164,13 @@ a {
 
 .produto-pagamento {
     display: flex;
-    text-align: center;
+    text-align: left;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    padding-bottom: 250px;
+}
+
+.secao-pix, .secao-cartao {
+    display: none;
 }

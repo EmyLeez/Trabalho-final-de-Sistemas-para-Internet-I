@@ -167,9 +167,38 @@
             <!-- <button onclick="efetuarCompra(this)">Confirmar Compra</button> -->
         </div>
 
+        
+        <!-- Seção para informações do PIX -->
+
+        <form id="formu-pagamento">
+            <div class="secao-pix">
+                <br>
+                <label for="nomePix">Nome Completo: </label>
+                <input type="text" id="nomePix"><br><br>
+                <label for="cpfPix">CPF: </label>
+                <input type="text" id="cpfPix"><br><br>
+            </div>
+        </form>
+
+        <!-- Seção para informações do Cartão -->
+        <div class="secao-cartao">
+            <br>
+            <label for="nomeCartao">Nome do Titular: </label>
+            <input type="text" id="nomeCartao"><br><br>
+            <label for="numeroCartao">Número do Cartão: </label>
+            <input type="text" id="numeroCartao"><br><br>
+            <label for="validadeCartao">Validade do Cartão (mm/aa): </label>
+            <input type="text" id="validadeCartao"><br><br>
+            <label for="parcelamentoCartao">Opções de Parcelamento: </label>
+            <!-- Outros campos do cartão... -->
+        </div>
+
         <script>
             $(document).ready(function () {
                 $(".botao-compra").click(function () {
+
+                    $(".secao-pix, .secao-cartao").hide();
+                    $("#nomePix, #cpfPix, #nomeCartao, #numeroCartao, #validadeCartao, #parcelamentoCartao").val("");
 
                     // Pegando dados do produto selecionado a partir do clique no botão do usuário. A finalidade é mostrar para o usuário qual o produto que ele selecionou.
                     var nomeDoProduto = $(this).attr("nome_produto");
@@ -180,6 +209,18 @@
                     // Permite a visualização dos métodos de pagamento.
                     $(".opcoes-pagamento").toggle();
                 });
+
+                $('input[name="metodoPagamento"]').change(function () {
+                    var metodoPagamento = $(this).val();
+
+                    $(".secao-pix, .secao-cartao").hide();
+
+                    if (metodoPagamento === "pix") {
+                        $(".secao-pix").show();
+                    } else if (metodoPagamento === "cartao") {
+                        $(".secao-cartao").show();
+                    }
+                });                
         
                 $(".botao-confirmar").click(function () {
                     $(".opcoes-pagamento").hide();
