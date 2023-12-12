@@ -181,14 +181,12 @@
 
             <!-- Seção para informações do Cartão -->
             <div class="secao-cartao">
-                <br>
-
                 <label for="nomeTitular">Nome do Titular:</label>
                 <input type="text" id="nomeTitular" required>
         
                 <label for="cartaoNumero">Número do Cartão:</label>
-                <input type="text" id="cartaoNumero" pattern="\d{4} \d{4} \d{4} \d{4}" title="Formato esperado: 1234 5678 9123 0000" required>
-        
+                <input type="text" id="cartaoNumero" pattern="\d{4} \d{4} \d{4} \d{4}" title="Formato esperado: 1234 5678 9123 0000" required><img id="visaBandeira" src="assets/visa.png"> <img id="mastercardBandeira" src="assets/mastercard.png">
+
                 <label for="validadeCartao">Validade do Cartão (mm/aa):</label>
                 <input type="text" id="validadeCartao" pattern="\d{2}/\d{2}" title="Formato esperado: mm/aa" required>
         
@@ -239,6 +237,74 @@
                     }
                 });
 
+                $("#cartaoNumero").on("input", function () {
+                    // Verificando opções de bandeira do cartão e de confirmação da formatação do número
+                    var numeroCartao = $(this).val().replace(/\s/g, '');
+
+                    if (numeroCartao.startsWith("1234")) {
+                        $("#visaBandeira").show();
+                        $("#mastercardBandeira").hide();
+                    } else if (numeroCartao.startsWith("4321")) {
+                        $("#visaBandeira").hide();
+                        $("#mastercardBandeira").show();
+                    } else {
+                        $("#visaBandeira").hide();
+                        $("#mastercardBandeira").hide();
+                    }
+
+                    var formatoCartao = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/;
+                    var formatoValido = formatoCartao.test(numeroCartao);
+
+                    if (formatoValido) {
+                        $("#mensagemErroCartao").hide();
+                    } else {
+                        $("#mensagemErroCartao").show().text("Número do cartão inválido. Verifique o formato.");
+                    }
+
+                });
+                
+                // Validador do Formato de Validade do Cartão
+                $("#validadeCartao").on("input", function () {
+                    var validadeCartao = $(this).val();
+                    var formatoValidade = /^(0[1-9]|1[0-2])\/\d{2}$/;
+
+                    const start = Date.now();
+                    const dataLegivel = new Date(start);
+
+                    const mes = dataLegivel.getMonth() + 1;
+                    const ano = dataLegivel.getFullYear() % 100;
+
+                    const partesData = validadeCartao.split('/');
+                    
+                    var formatoValido = formatoValidade.test(validadeCartao);
+                    const mesCartao = parseInt(partesData[0], 10);
+                    const anoCartao = parseInt(partesData[1], 10);
+
+                    if (formatoValido) {
+                        if (anoCartao > ano || (anoCartao === ano && mesCartao >= mes)) {
+                            $("#mensagemErroValidade").hide();
+                        } else {
+                            $("#mensagemErroValidade").show().text("Cartão vencido. Por favor, verifique a validade!");
+                        }
+                    } else {
+                        $("#mensagemErroValidade").show().text("Formato de validade inválido. Verifique (mm/aa).");
+                    }
+                });
+
+                // Verificador do Código de Segurança
+                $("#segurancaCodigo").on("input", function () {
+                    var codeSecure = $(this).val();
+                    var codeFormatted = /^\d{3}$/;
+
+                    if (codeFormatted.test(codeSecure)) {
+                        $("#mensagemErroCVV").hide();
+                        $(this).removeClass("erro-input").addClass("ok-input");
+                    } else {
+                        $("#mensagemErroCVV").show().text("Código de segurança inválido. Deve conter exatamente 3 dígitos.");
+                        $(this).removeClass("ok-input").addClass("erro-input");
+                    }
+                });
+
                 $('input[name="metodoPagamento"]').change(function () {
                     var metodoPagamento = $(this).val();
 
@@ -253,36 +319,35 @@
         
                 $(".botao-confirmar").click(function () {
                     $(".opcoes-pagamento").hide();
-                    // Lógica para efetuar a compra, enviar dados ao servidor, etc.
                 });
             });
 
-        $(document).ready(function () {
-            $("#cpfPix").on("input", function () {
-                var currentValue = $(this).val();
+            $(document).ready(function () {
+                $("#cpfPix").on("input", function () {
+                    var currentValue = $(this).val();
 
-                var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-                if (!cpfRegex.test(currentValue)) {
-                    $(this).addClass("erro-cpf");
-                } else {
-                    $(this).removeClass("erro-cpf");
-                    $(this).addClass("ok-cpf");
-                }
-            });
+                    var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+                    if (!cpfRegex.test(currentValue)) {
+                        $(this).addClass("erro-cpf");
+                    } else {
+                        $(this).removeClass("erro-cpf");
+                        $(this).addClass("ok-cpf");
+                    }
+                });
 
-            // Verifica diretamente na tentativa de envio de formulário para saber se o CPF está no formato correto
-            $("#formu-pagamento").submit(function (event) {
-                var currentValue = $("#cpfPix").val();
+                // Verifica diretamente na tentativa de envio de formulário para saber se o CPF está no formato correto
+                $("#formu-pagamento").submit(function (event) {
+                    var currentValue = $("#cpfPix").val();
 
-                // Verifica se o CPF está no formato correto usando uma expressão regular
-                var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-                if (!cpfRegex.test(currentValue)) {
-                    // O CPF não está no formato correto, impede o envio do formulário
-                    alert("CPF inválido! Verifique o formato.");
-                    event.preventDefault(); // Impede o envio do formulário
-                }
-            });
-        });
+                    // Verifica se o CPF está no formato correto usando uma expressão regular
+                    var cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+                    if (!cpfRegex.test(currentValue)) {
+                        // O CPF não está no formato correto, impede o envio do formulário
+                        alert("CPF inválido! Verifique o formato.");
+                        event.preventDefault(); // Impede o envio do formulário
+                    }
+                });
+            });            
 
         </script>
     </div>
