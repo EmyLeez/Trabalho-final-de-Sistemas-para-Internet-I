@@ -153,25 +153,23 @@
     </div>
 
     <div class="produto-pagamento">
-
-        <div class="opcoes-pagamento">
-            <!-- Conteúdo das opções de pagamento -->
-            <p>Produto Selecionado: <b><span class="nome-produto"></span></b></p>
-            <p><b>Selecione a forma de pagamento:</b></p>
-            <label>
-                <input type="radio" name="metodoPagamento" value="pix"> PIX
-            </label>
-            <label>
-                <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
-            </label><br>
-            <!-- <button onclick="efetuarCompra(this)">Confirmar Compra</button> -->
-        </div>
-
-        
         <!-- Seção para informações do PIX -->
 
         <form id="formu-pagamento">
 
+            <div class="opcoes-pagamento">
+                <!-- Conteúdo das opções de pagamento -->
+                <p>Produto Selecionado: <b><span class="nome-produto"></span></b></p>
+                <p><b>Selecione a forma de pagamento:</b></p>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="pix"> PIX
+                </label>
+                <label>
+                    <input type="radio" name="metodoPagamento" value="cartao"> Cartão de Crédito
+                </label><br>
+                <!-- <button onclick="efetuarCompra(this)">Confirmar Compra</button> -->
+            </div>
+            
             <div class="secao-pix">
                 <br>
                 <label for="nomePix">Nome Completo: </label>
@@ -205,11 +203,6 @@
                     <option value="4">4x de R$ XX (Com juros)</option>
                     <option value="5">5x de R$ XX (Com juros)</option>
                 </select>
-        
-                <div class="card-icons">
-                    <div class="card-icon" id="visa-icon" style="background-image: url('https://cdn1.iconfinder.com/data/icons/cash-card-add-on/48/v-18-512.png');"></div>
-                    <div class="card-icon" id="mastercard-icon" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTulCCCs4aQfCdcekFralabUh6zmkngCirWjiNP-zMpPQ&s');"></div>
-                </div>
         
                 <button type="submit">Confirmar Pagamento</button>
             </div>
